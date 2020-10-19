@@ -30,4 +30,28 @@ public class HelloController {
         return "Hello " + name;
     }
 
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam("name") String name) {
+        // make an object (객체를 만들다)
+        // cmd shift enter -> auto finish
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+
+    static class Hello {
+        private String name;
+
+        // Getter & Setter Encapsulation (OOPS)
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+
+
 }
