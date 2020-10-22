@@ -4,6 +4,8 @@ import hello.hellospringgradle.domain.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
+
 
 public class MemoryMemberRepositoryTest {
     MemberRepository repository = new MemoryMemberRepository();
@@ -18,7 +20,7 @@ public class MemoryMemberRepositoryTest {
         Member result = repository.findById(member.getId()).get();
         System.out.println("result = " + (result == member));
 //        Assertions.assertEquals(result, member);
-        Assertions.assertThat(member).isEqualTo(result);
+        assertThat(member).isEqualTo(result);
 
     }
 
@@ -36,7 +38,7 @@ public class MemoryMemberRepositoryTest {
 
         Member result = repository.findByName("Sung 1").get();
 
-//        assertThat(result).isEqualTo(m1);
+        assertThat(result).isEqualTo(m1);
 
     }
 
