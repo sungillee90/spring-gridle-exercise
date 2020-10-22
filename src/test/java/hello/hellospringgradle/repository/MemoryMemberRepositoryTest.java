@@ -1,10 +1,9 @@
 package hello.hellospringgradle.repository;
 
 import hello.hellospringgradle.domain.Member;
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MemoryMemberRepositoryTest {
     MemberRepository repository = new MemoryMemberRepository();
@@ -17,16 +16,28 @@ public class MemoryMemberRepositoryTest {
         repository.save(member);
 
         Member result = repository.findById(member.getId()).get();
-
         System.out.println("result = " + (result == member));
+//        Assertions.assertEquals(result, member);
+        Assertions.assertThat(member).isEqualTo(result);
 
-        Assertions.assertEquals(result, member);
     }
 
     @Test
     public void findByName() {
         Member m1 = new Member();
-        m1.setName("Sung");
+        m1.setName("Sung 1");
+
+        repository.save(m1);
+
+        Member m2 = new Member();
+        m2.setName("Sung 2");
+
+        repository.save(m2);
+
+        Member result = repository.findByName("Sung 1").get();
+
+//        assertThat(result).isEqualTo(m1);
+
     }
 
 }
