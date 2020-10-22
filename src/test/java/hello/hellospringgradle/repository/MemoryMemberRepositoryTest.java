@@ -1,5 +1,6 @@
 package hello.hellospringgradle.repository;
 
+import hello.hellospringgradle.domain.Member;
 import org.junit.jupiter.api.Test;
 
 public class MemoryMemberRepositoryTest {
@@ -7,6 +8,13 @@ public class MemoryMemberRepositoryTest {
 
     @Test
     public void save(){
+        Member member = new Member();
+        member.setName("spring");
 
+        repository.save(member);
+
+        Member result = repository.findById(member.getId()).get();
+
+        System.out.println("result = " + (result == member));
     }
 }
