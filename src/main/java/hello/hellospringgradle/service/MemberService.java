@@ -4,11 +4,19 @@ import hello.hellospringgradle.domain.Member;
 import hello.hellospringgradle.repository.MemberRepository;
 import hello.hellospringgradle.repository.MemoryMemberRepository;
 
+import java.util.Optional;
+
 public class MemberService {
     private final MemberRepository memberRepository = new MemoryMemberRepository();
 
     // Register
     public Long join(Member member) {
+
+        // if there is DUPLICATE, it cannot happen
+        // try cmd + opt + v
+        Optional<Member> result = memberRepository.findByName(member.getName());
+
+
         memberRepository.save(member);
         return member.getId();
     }
