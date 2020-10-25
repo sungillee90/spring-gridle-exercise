@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 public class MemoryMemberRepositoryTest {
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
+    // to test MMRT class you need to put this @AfterEach notation
     @AfterEach
     public void afterEach() {
         repository.clearStore();
