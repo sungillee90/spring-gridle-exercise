@@ -4,6 +4,7 @@ import hello.hellospringgradle.domain.Member;
 import hello.hellospringgradle.repository.MemberRepository;
 import hello.hellospringgradle.repository.MemoryMemberRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
@@ -29,5 +30,13 @@ public class MemberService {
                 .ifPresent(m -> {
                     throw new IllegalStateException("User already exist");
                 });
+    }
+
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
+
+    public Optional<Member> findOne(Long memberId) {
+        return memberRepository.findById(memberId);
     }
 }
