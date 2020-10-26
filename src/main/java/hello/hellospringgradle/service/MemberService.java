@@ -14,10 +14,14 @@ public class MemberService {
 
         // if there is DUPLICATE, it cannot happen
         // try cmd + opt + v
-        Optional<Member> result = memberRepository.findByName(member.getName());
-        result.ifPresent(m -> {
-            throw new IllegalThreadStateException("Username is already exist. Do you remember?");
-        });
+        memberRepository.findByName(member.getName())
+                .ifPresent(m -> {
+                    throw new IllegalStateException("User already exist");
+                });
+//        Optional<Member> result = memberRepository.findByName(member.getName());
+//        result.ifPresent(m -> {
+//            throw new IllegalThreadStateException("Username is already exist. Do you remember?");
+//        });
 
         memberRepository.save(member);
         return member.getId();
