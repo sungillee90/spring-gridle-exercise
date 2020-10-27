@@ -1,7 +1,9 @@
 package hello.hellospringgradle.service;
 
 import hello.hellospringgradle.domain.Member;
+import hello.hellospringgradle.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,6 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberServiceTest {
 
     MemberService memberService = new MemberService();
+    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+
+    @AfterEach
+    public void afterEAch() {
+        memberRepository.clearStore();
+    }
 
     @Test
     void join() {
@@ -35,17 +43,14 @@ class MemberServiceTest {
 
         //when
         memberService.join(m1);
+
         try {
             memberService.join(m2);
             fail();
         } catch (IllegalStateException e) {
             e.printStackTrace();
         }
-
-
         //then
-
-
     }
 
     @Test
