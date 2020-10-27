@@ -25,6 +25,20 @@ class MemberServiceTest {
     }
 
     @Test
+    public void duplicateException() {
+        //given
+        Member m1 = new Member();
+        m1.setName("spring");
+
+        Member m2 = new Member();
+        m2.setName("spring");
+
+        //when
+
+        //then
+    }
+
+    @Test
     void findMembers() {
     }
 
