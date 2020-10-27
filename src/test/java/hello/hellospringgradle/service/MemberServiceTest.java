@@ -4,14 +4,21 @@ import hello.hellospringgradle.domain.Member;
 import hello.hellospringgradle.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
+
+    @BeforeEach
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService();
+    }
 
     @AfterEach
     public void afterEAch() {
