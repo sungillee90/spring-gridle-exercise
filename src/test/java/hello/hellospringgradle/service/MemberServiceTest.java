@@ -34,8 +34,18 @@ class MemberServiceTest {
         m2.setName("spring");
 
         //when
+        memberService.join(m1);
+        try {
+            memberService.join(m2);
+            fail();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
+
 
         //then
+
+
     }
 
     @Test
