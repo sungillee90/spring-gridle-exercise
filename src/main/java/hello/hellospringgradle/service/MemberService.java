@@ -3,10 +3,12 @@ package hello.hellospringgradle.service;
 import hello.hellospringgradle.domain.Member;
 import hello.hellospringgradle.repository.MemberRepository;
 import hello.hellospringgradle.repository.MemoryMemberRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
     private final MemberRepository memberRepository = new MemoryMemberRepository();
 
